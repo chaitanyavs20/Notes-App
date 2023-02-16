@@ -27,25 +27,29 @@
     </Toolbar>
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/editText_title"
-        android:hint="Title"
-        android:textColor="@color/black"
-        android:background="@android:color/transparent"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:singleLine="true"
-        android:padding="8dp"></EditText>
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText_notes"
-        android:hint="Add Notes"
-        android:textColor="@color/black"
+        android:autofillHints=""
         android:background="@android:color/transparent"
-        android:textStyle="normal"
+        android:hint="Title"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"></EditText>
+
+    <EditText
+        android:id="@+id/editText_notes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:hint="Add Notes"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="@color/black"
         android:textSize="16sp"
-        android:padding="8dp"></EditText>
+        android:textStyle="normal"></EditText>
 
 </LinearLayout>

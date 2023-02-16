@@ -56,14 +56,14 @@ public class NoteListAdapter extends RecyclerView.Adapter<NotesViewHolder>{
         holder.notes_container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(list.get(holder.getBindingAdapterPosition()));
+                listener.onClick(list.get(holder.getAdapterPosition()));
             }
         });
 
         holder.notes_container.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                listener.onLongClickListener(list.get(holder.getBindingAdapterPosition()),holder.notes_container);
+                listener.onLongClick(list.get(holder.getAdapterPosition()),holder.notes_container);
                 return true;
             }
         });
@@ -73,6 +73,11 @@ public class NoteListAdapter extends RecyclerView.Adapter<NotesViewHolder>{
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public void filterList(List<Notes> filteredList){
+        list = filteredList;
+        notifyDataSetChanged();
     }
 }
 

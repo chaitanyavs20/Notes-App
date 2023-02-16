@@ -27,6 +27,7 @@ public class NotesTakerActivity extends AppCompatActivity {
     EditText editText_title, editText_notes;
     ImageView imageView_save;
     Notes notes;
+    boolean isOldNote = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,26 +38,35 @@ public class NotesTakerActivity extends AppCompatActivity {
         editText_title = findViewById(R.id.editText_title);
         editText_notes = findViewById(R.id.editText_notes);
 
-        String title = editText_title.getText().toString();
-        System.out.println(title);
-        String desc = editText_notes.getText().toString();
-        System.out.println(desc);
+        notes = new Notes();
+        try {
+            notes = (Notes) getIntent().getSerializableExtra("old_name");
+            editText_title.setText(notes.getTitle());
+            editText_notes.setText(notes.getNotes());
+            isOldNote=true;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
 
      imageView_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String title = editText_title.getText().toString();
-                System.out.println(title);
                 String desc = editText_notes.getText().toString();
-                System.out.println(desc);
 
                 if(desc.isEmpty()){
-                    Toast.makeText(NotesTakerActivity.this,"Please Add Some Notes",Toast.LENGTH_SHORT);
+                    Toast.makeText(NotesTakerActivity.this,"Please Add Some Notes",Toast.LENGTH_LONG);
                     return;
                 }
 
-                SimpleDateFormat formatter = new SimpleDateFormat("EEE d MMM yy HH:mm a");
+                SimpleDateFormat formatter = new SimpleDateFormat("EEE, d MMM yy HH:mm a");
                 Date date= new Date();
+
+                if(!isOldNote) {
+                    notes = new Notes();
+                }
 
                 notes.setTitle(title);
                 notes.setNotes(desc);

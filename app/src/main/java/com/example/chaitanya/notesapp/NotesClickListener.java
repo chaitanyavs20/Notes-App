@@ -8,5 +8,5 @@ public interface NotesClickListener {
 
     void onClick(Notes notes);
 
-    void onLongClickListener(Notes notes, CardView cardView);
+    void onLongClick(Notes notes, CardView cardView);
 }
